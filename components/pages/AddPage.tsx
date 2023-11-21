@@ -6,7 +6,6 @@ import { Button } from "../ui/button";
 type TCountryData = {
     name: string;
     color: string;
-    neighbours: TCountryData;
 }
 
 type TAddPage = {
@@ -15,6 +14,24 @@ type TAddPage = {
 
 const AddPage = ({ handleAdd }: TAddPage) => {
     const [countryData, setCountryData] = useState<TCountryData[]>([]);
+
+    const updateCountryData = (name: string | null, color: string | null) => {
+        if(name && !color){
+            setCountryData((prev) => {
+                return {
+                    ...prev,
+                    name: name
+                }
+            })
+        } else if(color && !name){
+            setCountryData((prev) => {
+                return {
+                    ...prev,
+                    color: color
+                }
+            })
+        }
+    }
 
     return (
         <main className="flex justify-center items-center h-screen flex-col gap-2">
