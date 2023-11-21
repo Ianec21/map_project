@@ -1,20 +1,18 @@
 import AddPage from "@/components/pages/AddPage";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+import { redirect } from "next/navigation";
 
-type TCountryData = {
-    name: string;
-    color: string;
-    neighbours: TCountryData;
-}
+const Add: React.FC = async() => {
+    //checking if the user is logged in.
+    const { data: user } = await supabase.auth.getUser();
+    if(!user.user){
+        return redirect("/auth");
+    }
 
-const Add: React.FC = () => {
     //in order to send a server function to a client component I need to set "use server"
     //and make the function async, that's how Next.JS handles it.
     const handleAddCountry = async() => {
         "use server";
-
-        alert("Hey.");
     }
 
     return <AddPage handleAdd={handleAddCountry}/>
