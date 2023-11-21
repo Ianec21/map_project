@@ -4,11 +4,12 @@ import { LoadScript, GoogleMap, Marker, InfoWindow } from "@react-google-maps/ap
 import { useState } from "react";
 
 type TCountry = {
+    id: string;
     name: string;
     color: string;
     lat: number;
     lng: number;
-    user: string;
+    user_id: string;
 }
 
 const center = {
@@ -30,7 +31,7 @@ const GoogleMaps = ({
                     center={center}
                     zoom={3}
                 >
-                    {countries && countries.length > 0 && countries.map((country: any) => <Marker
+                    {countries && countries.length > 0 && countries.map((country: TCountry) => <Marker
                         key={`marker_${country.id}`}
                         position={
                             {
@@ -62,7 +63,7 @@ const GoogleMaps = ({
                     >
                         <div>
                             <h3>{selectedCountry.name}</h3>
-                            <p>Created by {selectedCountry.user}</p>
+                            <p>Created by {selectedCountry.user_id}</p>
                         </div>
                     </InfoWindow>}
                 </GoogleMap>
