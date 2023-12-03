@@ -1,7 +1,7 @@
 "use client";
 
-import { LoadScript, GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
-import { useState } from "react";
+import { LoadScript, GoogleMap, Marker, InfoWindow, useJsApiLoader } from "@react-google-maps/api";
+import { useEffect, useState } from "react";
 export const dynamic = 'force-dynamic';
 
 type TCountry = {
@@ -22,11 +22,22 @@ const GoogleMaps = ({
     countries
 }: { countries: any | [] }) => {
 
+    const [isActive, setIsActive] = useState<boolean>(false);
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: 'AIzaSyBCbmUdTQJOxiTSU5WqjCSRLZs0YII-SNY',
+        libraries: ['maps']
+    });
+
+    useEffect(() => {
+        setIsActive(true);
+    }, []);
+
     const [selectedCountry, setSelectedCountry] = useState<TCountry | null>(null);
 
-    return (
-        <div className="grow">
-            <LoadScript googleMapsApiKey="AIzaSyBCbmUdTQJOxiTSU5WqjCSRLZs0YII-SNY">
+    if(isLoaded){
+        return (
+            <div className="grow">
                 <GoogleMap
                     mapContainerClassName="w-[100%] h-[100%]"
                     center={center}
@@ -68,9 +79,9 @@ const GoogleMaps = ({
                         </div>
                     </InfoWindow>}
                 </GoogleMap>
-            </LoadScript>
-        </div>
+            </div>
     )
+    }
 }
 
 export default GoogleMaps;
