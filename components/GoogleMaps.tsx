@@ -2,6 +2,7 @@
 
 import { LoadScript, GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
 import { useState } from "react";
+export const dynamic = 'force-dynamic';
 
 type TCountry = {
     id: string;
