@@ -5,6 +5,7 @@ import { generateRandomHexColor, isHexColorCode } from "@/lib/utils";
 import { redirect } from "next/navigation";
 
 export type TCountryData = {
+    id: string;
     name: string;
     color: string;
     coordinates: {
