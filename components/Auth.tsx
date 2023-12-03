@@ -6,7 +6,7 @@ import { TUser } from "@/app/auth/page";
 
 type TAuthForm = {
     handleSignIn: (authData: TUser) => void;
-    handleSignUp: (authData: TUser) => void;
+    handleSignUp: (authData: TUser, emailRedirect: string) => void;
     infoText: string;
 }
 
@@ -43,7 +43,7 @@ const Auth = ({
             <Input onChange={(e) => handleUpdate(e.target.value, null)} placeholder="E-Mail" required/>
             <Input onChange={(e) => handleUpdate(null, e.target.value)} placeholder="Password" type="password" required/>
             <Button type="button" onClick={() => handleSignIn(authData!)}>Sign In</Button>
-            <Button type="button" onClick={() => handleSignUp(authData!)}>Sign Up</Button>
+            <Button type="button" onClick={() => handleSignUp(authData!, `${location.origin}/auth/callback`)}>Sign Up</Button>
         </form>
     )
 }

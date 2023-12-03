@@ -11,6 +11,7 @@ type TAddPage = {
 
 const AddPage = ({ handleAdd, errorMessage }: TAddPage) => {
     const [countryData, setCountryData] = useState<TCountryData>({
+        id: "",
         name: "",
         color: "",
         coordinates: {
