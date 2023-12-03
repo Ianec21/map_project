@@ -8,6 +8,7 @@ export const dynamic = 'force-dynamic';
 
 const Map = async() => {
     let { data: countries, error } = await supabase.from("countries").select();
+    console.log(countries);
 
     return (
         <main className="p-20 flex flex-col gap-2 flex-1 h-screen w-screen">

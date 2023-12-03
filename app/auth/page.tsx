@@ -27,6 +27,7 @@ const SignIn = ({
     const handleSignUp = async(authData: TUser) => {
         "use server";
         let { data, error } = await supabase.auth.signUp(authData);
+        console.log(data);
         if(!error){
             return redirect('/auth?message=Check email to continue sign in process')
         } else {
