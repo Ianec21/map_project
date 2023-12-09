@@ -16,4 +16,4 @@
 <p>docker run -d -p 80:3000 pricopmihai/map_project</p>
 <p>Acces the website with http://localhost</p>
 
-<p>To stop use these commands: docker ps and docker stop <CONTAINER ID></p>
+<p>To stop use these commands: docker ps and docker stop CONTAINER ID</p>
