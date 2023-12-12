@@ -5,10 +5,12 @@
 <h5>Ce reprezinta acest proiect?</h5>
 <p>Acest proiect ofera posibilitatea utilizatorilor de a se autentifica, inregistra, adauga tari pe harta cu diferite culori. Ulterior, tarile pot fi modificate.</p>
 
-<h5>How to run?</h5>
-<p>npm install</p>
-<p>npm run build</p>
-<p>npm run start</p>
+<h5>How to run locally?</h5>
+```
+npm install
+npm run build
+npm run start
+```
 
 <h5>Docker steps</h5>
 
@@ -16,4 +18,8 @@
 <p>docker run --hostname=ee47e0bda96c --mac-address=02:42:ac:11:00:02 --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=NODE_VERSION=18.19.0 --env=YARN_VERSION=1.22.19 --workdir=/usr/src/app -p 80:3000 --restart=no --runtime=runc -d pricopmihai/map_project</p>
 <p>Acces the website with http://localhost</p>
 
-<p>To stop use these commands: docker ps and docker stop CONTAINER ID</p>
+<p>To stop use these commands:</p>
+```
+docker ps
+docker stop CONTAINER ID
+```
